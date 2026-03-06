@@ -1,10 +1,10 @@
 from flask import Flask, request, abort
- from linebot import LineBotApi, WebhookHandler
- from linebot.exceptions import InvalidSignatureError
- from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageMessage
- import tensorflow.keras
- from PIL import Image, ImageOps
- import numpy as np
+from linebot import LineBotApi, WebhookHandler
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageMessage
+import tensorflow.keras
+from PIL import Image, ImageOps
+import numpy as np
  app = Flask(__name__)
  line_bot_api = LineBotApi('2009339761')
  handler = WebhookHandler('4d635c6839b20911f6d904274eb908c64)
