@@ -14,17 +14,16 @@ labels = open('labels.txt', 'r', encoding='utf-8').readlines()
 def callback():
       signature = request.headers['x-line-signature']
       body = request.get_data(as_text=True)
- try:
-     handler.handle(body, signature)
- except InvalidSignatureError:
-         abort(400)
-    return 'OK'
+try:
+      handler.handle(body, signature)
+except InvalidSignatureError:
+      abort(400)
 @handler.add(MessageEvent, message=TextMessage) 
 def handler_text_message(event):
      text = event.message.text
      if "น้ำหนัก"in text and"ส่วนสูง" in text:
-         try:
-             parts = text.split()
+try:
+       parts = text.split()
              w = float(parts[1])
              h = float(parts[3]) / 100
              bmi = w / (h**2)
@@ -36,8 +35,7 @@ def handler_text_message(event):
             else:
                 advice = "ค่า BMI ของคุณสูงกว่าเกณฑ์นะคะ ควรเลี่ยงของทอดและของหวาน แนะนำอาหารที่ควรทาน เช่น ข้าวกับต้มจืด เนื่องจากเมนูนี้ให้พลังงานพอดีและเป็นอาหารไขมันต่ำค่ะ"
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text=result+advice))
-        except:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="กรุณาพิมพ์ในรูปแบบ: น้ำหนัก 70 ส่วนสูง 170"))
+except   line_bot_api.reply_message(event.reply_token, TextSendMessage(text="กรุณาพิมพ์ในรูปแบบ: น้ำหนัก 70 ส่วนสูง 170"))
 @handler.add(MessageEvent, message=ImageMessage)
 def handle_image_message(event):
     message_content = line_bot_api.get_message_content(event.message.id)
