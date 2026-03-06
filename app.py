@@ -14,9 +14,9 @@ labels = open('labels.txt', 'r').readlines()
 def callback():
      signature = request.headers['x-line-signature']
      body = request.get_data(as_text=True)
-     try:
-         handler.handle(body, signature)
-    except InvalidSignatureError:
+try:
+    handler.handle(body, signature)
+except InvalidSignatureError:
         abort(400)
     return 'OK'
 @handler.add(MessageEvent, message=TextMessage) 
