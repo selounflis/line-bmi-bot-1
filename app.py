@@ -7,7 +7,7 @@ from PIL import Image, ImageOps
 import numpy as np
 app = Flask(__name__)
 line_bot_api = LineBotApi('2009339761')
-handler = WebhookHandler('4d635c6839b20911f6d904274eb908c64)
+handler = WebhookHandler('4d635c6839b20911f6d904274eb908c64')
 model = tensorflow.keras.models.load.model('keras_model.h5')
 labels = open('labels.txt', 'r').readlines()
  @app.route("/callback", methods=['POST'])
