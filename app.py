@@ -21,7 +21,7 @@ except InvalidSignatureError:
 @handler.add(MessageEvent, message=TextMessage) 
 def handler_text_message(event):
      text = event.message.text
-     if "น้ำหนัก"in text and"ส่วนสูง" in text:
+if "น้ำหนัก"in text and"ส่วนสูง" in text:
 try:
        parts = text.split()
              w = float(parts[1])
